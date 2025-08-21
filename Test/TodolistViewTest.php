@@ -67,26 +67,32 @@ function testViewAddTodolist(): void
 }
 
 // function test remove todolist
-// function testViewRemoveTodolist(): void
-// {
+function testViewRemoveTodolist(): void
+{
+    // var todolistRepository, menyimpan data TodolistRepositoryImpl
+    $todolistRepository = new TodolistRepositoryImpl();
 
-//     $todolistRepository = new TodolistRepositoryImpl();
-//     $todolistService = new TodolistServiceImpl($todolistRepository);
-//     $todolistView = new TodolistView($todolistService);
+    // var todolistService, menyimpan data TodolistServiceImpl, dan harus punya property dari var TodolistRepositoryImpl
+    $todolistService = new TodolistServiceImpl($todolistRepository);
 
-//     $todolistService->addTodolist("Belajar PHP");
-//     $todolistService->addTodolist("Belajar PHP OOP");
-//     $todolistService->addTodolist("Belajar PHP Database");
+    // var todolistView, menyimpan data TodolistServiceImpl, dan harus punya property dari var todolistService
+    $todolistView = new TodolistView($todolistService);
 
-//     $todolistService->showTodolist();
+    // ambil function addTodolist dari service
+    $todolistService->addTodolist("Belajar PHP");
+    $todolistService->addTodolist("Belajar PHP OOP");
+    $todolistService->addTodolist("Belajar PHP Database");
 
-//     $todolistView->removeTodolist();
+    // ambil function showTodolist dari todolistService
+    $todolistService->showTodolist();
 
-//     $todolistService->showTodolist();
+    $todolistView->removeTodolist();
 
-//     $todolistView->removeTodolist();
+    $todolistService->showTodolist();
 
-//     $todolistService->showTodolist();
-// }
+    $todolistView->removeTodolist();
 
-// testViewRemoveTodolist();
+    $todolistService->showTodolist();
+}
+
+testViewRemoveTodolist();
