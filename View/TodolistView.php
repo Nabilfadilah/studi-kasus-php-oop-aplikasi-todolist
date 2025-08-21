@@ -4,45 +4,51 @@
 namespace View {
 
     // ambil namesape service serta class TodoListService 
-    // use Service\TodolistService;
-    // use Helper\InputHelper;
+    use Service\TodolistService;
+    use Helper\InputHelper;
 
     // langsung class, tidak harus interface
     class TodolistView
     {
 
-        // private TodolistService $todolistService;
+        // ambil interface todolistservice, dan berikan var $todolistService 
+        private TodolistService $todolistService;
 
-        // public function __construct(TodolistService $todolistService)
-        // {
-        //     $this->todolistService = $todolistService;
-        // }
+        // construct untuk interface TodolistService, dan buat param $todolistService
+        public function __construct(TodolistService $todolistService)
+        {
+            // maka ambil object todolistservice, sama dengan param $todolistService
+            $this->todolistService = $todolistService;
+        }
 
         // show, tidak perlu parameter, karena cuma ngerender tampilan saja
         function showTodolist(): void
         {
-            // while (true) {
-            //     $this->todolistService->showTodolist();
+            while (true) {
+                // variabel todolistService, ambil function todolist
+                $this->todolistService->showTodolist();
 
-            //     echo "MENU" . PHP_EOL;
-            //     echo "1. Tambah Todo" . PHP_EOL;
-            //     echo "2. Hapus Todo" . PHP_EOL;
-            //     echo "x. Keluar" . PHP_EOL;
+                // tampilkan di terminal
+                echo "MENU" . PHP_EOL;
+                echo "1. Tambah Todo" . PHP_EOL;
+                echo "2. Hapus Todo" . PHP_EOL;
+                echo "x. Keluar" . PHP_EOL;
 
-            //     $pilihan = InputHelper::input("Pilih");
+                $pilihan = InputHelper::input("Pilih");
 
-            //     if ($pilihan == "1") {
-            //         $this->addTodolist();
-            //     } else if ($pilihan == "2") {
-            //         $this->removeTodolist();
-            //     } else if ($pilihan == "x") {
-            //         break;
-            //     } else {
-            //         echo "Pilihan tidak dimengerti" . PHP_EOL;
-            //     }
-            // }
+                // pilihan dengan ketik nomor
+                if ($pilihan == "1") {
+                    $this->addTodolist(); // maka akan menambah todolist
+                } else if ($pilihan == "2") {
+                    $this->removeTodolist(); // maka akan remove todolist
+                } else if ($pilihan == "x") { // makan akan keluar dari todolist
+                    break;
+                } else {
+                    echo "Pilihan tidak dimengerti" . PHP_EOL; // kalau beda 
+                }
+            }
 
-            // echo "Sampai Jumpa Lagi" . PHP_EOL;
+            echo "Sampai Jumpa Lagi" . PHP_EOL; // tampilkan ini jika keluar
         }
 
         // add, tidak perlu parameter
