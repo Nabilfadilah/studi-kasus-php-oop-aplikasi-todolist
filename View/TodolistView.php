@@ -54,15 +54,20 @@ namespace View {
         // add, tidak perlu parameter
         function addTodolist(): void
         {
-            // echo "MENAMBAH TODO" . PHP_EOL;
+            // tampilkan pesan 
+            echo "MENAMBAH TODO" . PHP_EOL;
 
-            // $todo = InputHelper::input("Todo (x untuk batal)");
+            // variabel $todo, menyimpan class InputHelper, dan static function input
+            $todo = InputHelper::input("Todo (x untuk batal)");
 
-            // if ($todo == "x") {
-            //     echo "Batal menambah todo" . PHP_EOL;
-            // } else {
-            //     $this->todolistService->addTodolist($todo);
-            // }
+            // jika var todo adalah 'x'
+            if ($todo == "x") {
+                // tampilkan pesan
+                echo "Batal menambah todo" . PHP_EOL;
+            } else { // jika bukan 'x'
+                // maka gunakan interface todolistService dari function addtodolist, tambah todolist
+                $this->todolistService->addTodolist($todo);
+            }
         }
 
         // remove, tidak perlu parameter
