@@ -52,19 +52,21 @@ namespace Service {
         // add 
         function addTodolist(string $todo): void
         {
+            // buat var $todolist yang menyimpan class Todolist dan ambil param $todo
             $todolist = new Todolist($todo);
-            $this->todolistRepository->save($todolist);
-            echo "SUKSES MENAMBAH TODOLIST" . PHP_EOL;
+            $this->todolistRepository->save($todolist); // save() butuh data entity
+            echo "SUKSES MENAMBAH TODOLIST" . PHP_EOL; // tampilkan pesan 
         }
 
         // remove
         function removeTodolist(int $number): void
         {
-            if ($this->todolistRepository->remove($number)) {
-                echo "SUKSES MENGHAPUS TODOLIST" . PHP_EOL;
-            } else {
-                echo "GAGAL MENGHAPUS TODOLIST" . PHP_EOL;
-            }
+            // ambil todolistRepository, terus remove dari nomor nya
+            // if ($this->todolistRepository->remove($number)) { // remove() hharus ada param $number
+            //     echo "SUKSES MENGHAPUS TODOLIST" . PHP_EOL; // tampilkan pesan
+            // } else {
+            //     echo "GAGAL MENGHAPUS TODOLIST" . PHP_EOL; // tampilkan pesan
+            // }
         }
     }
 }
