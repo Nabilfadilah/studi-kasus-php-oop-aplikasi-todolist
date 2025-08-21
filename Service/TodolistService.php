@@ -62,11 +62,11 @@ namespace Service {
         function removeTodolist(int $number): void
         {
             // ambil todolistRepository, terus remove dari nomor nya
-            // if ($this->todolistRepository->remove($number)) { // remove() hharus ada param $number
-            //     echo "SUKSES MENGHAPUS TODOLIST" . PHP_EOL; // tampilkan pesan
-            // } else {
-            //     echo "GAGAL MENGHAPUS TODOLIST" . PHP_EOL; // tampilkan pesan
-            // }
+            if ($this->todolistRepository->remove($number)) { // remove() hharus ada param $number
+                echo "SUKSES MENGHAPUS TODOLIST" . PHP_EOL; // tampilkan pesan
+            } else {
+                echo "GAGAL MENGHAPUS TODOLIST" . PHP_EOL; // tampilkan pesan
+            }
         }
     }
 }

@@ -36,10 +36,13 @@ namespace Repository {
         // function remove, dengan parameter no datanya
         function remove(int $number): bool
         {
+            // jika ukuran lebih besar dari todolist
             if ($number > sizeof($this->todolist)) {
+                // kembalikan false (gagal remove)
                 return false;
             }
 
+            // kalau ukurannya lebih kecil dari todolist
             for ($i = $number; $i < sizeof($this->todolist); $i++) {
                 $this->todolist[$i] = $this->todolist[$i + 1];
             }
