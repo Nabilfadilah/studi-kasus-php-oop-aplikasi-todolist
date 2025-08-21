@@ -25,17 +25,20 @@ function testShowTodolist(): void
     $todolistService->showTodolist();
 }
 
-// function testAddTodolist(): void
-// {
-//     $todolistRepository = new TodolistRepositoryImpl();
+function testAddTodolist(): void
+{
+    // var todolistRepository, menyimpan data TodolistRepositoryImpl
+    $todolistRepository = new TodolistRepositoryImpl();
 
-//     $todolistService = new TodolistServiceImpl($todolistRepository);
-//     $todolistService->addTodolist("Belajar PHP");
-//     $todolistService->addTodolist("Belajar PHP OOP");
-//     $todolistService->addTodolist("Belajar PHP Database");
+    // var todolistService, menyimpan data TodolistServiceImpl, dan harus punya property dari var TodolistRepositoryImpl
+    $todolistService = new TodolistServiceImpl($todolistRepository);
+    $todolistService->addTodolist("Belajar PHP"); // ambil function addTodolist dari service
+    $todolistService->addTodolist("Belajar PHP OOP"); // ambil function addTodolist dari service
+    $todolistService->addTodolist("Belajar PHP Database"); // ambil function addTodolist dari service
 
-//     $todolistService->showTodolist();
-// }
+    // kemudian tampilkan todolist datanya
+    $todolistService->showTodolist();
+}
 
 // function testRemoveTodolist(): void
 // {
@@ -62,3 +65,5 @@ function testShowTodolist(): void
 // }
 
 // testRemoveTodolist();
+// testShowTodolist();
+// testAddTodolist();
