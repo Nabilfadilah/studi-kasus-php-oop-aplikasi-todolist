@@ -73,15 +73,20 @@ namespace View {
         // remove, tidak perlu parameter
         function removeTodolist(): void
         {
-            // echo "MENGHAPUS TODO" . PHP_EOL;
+            // tampilkan pesan
+            echo "MENGHAPUS TODO" . PHP_EOL;
 
-            // $pilihan = InputHelper::input("Nomor (x untuk batalkan)");
+            // variabel $pilihan, menyimpan class InputHelper, dan static function input
+            $pilihan = InputHelper::input("Nomor (x untuk batalkan)");
 
-            // if ($pilihan == "x") {
-            //     echo "Batal menghapus todo" . PHP_EOL;
-            // } else {
-            //     $this->todolistService->removeTodolist($pilihan);
-            // }
+            // jika var pilihan adalah 'x'
+            if ($pilihan == "x") {
+                // tampilkan pesan
+                echo "Batal menghapus todo" . PHP_EOL;
+            } else { // jika bukan 'x'
+                // maka gunakan interface todolistService dari function removeTodolist, remove todolist
+                $this->todolistService->removeTodolist($pilihan);
+            }
         }
     }
 }
