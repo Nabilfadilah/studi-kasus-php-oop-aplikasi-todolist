@@ -40,30 +40,37 @@ function testAddTodolist(): void
     $todolistService->showTodolist();
 }
 
-// function testRemoveTodolist(): void
-// {
-//     $todolistRepository = new TodolistRepositoryImpl();
+function testRemoveTodolist(): void
+{
+    // var todolistRepository, menyimpan data TodolistRepositoryImpl
+    $todolistRepository = new TodolistRepositoryImpl();
 
-//     $todolistService = new TodolistServiceImpl($todolistRepository);
-//     $todolistService->addTodolist("Belajar PHP");
-//     $todolistService->addTodolist("Belajar PHP OOP");
-//     $todolistService->addTodolist("Belajar PHP Database");
+    // var todolistService, menyimpan data TodolistServiceImpl, dan harus punya property dari var TodolistRepositoryImpl
+    $todolistService = new TodolistServiceImpl($todolistRepository);
 
-//     $todolistService->showTodolist();
+    // ambil function addTodolist dari service
+    $todolistService->addTodolist("Belajar PHP");
+    $todolistService->addTodolist("Belajar PHP OOP");
+    $todolistService->addTodolist("Belajar PHP Database");
 
-//     $todolistService->removeTodolist(1);
-//     $todolistService->showTodolist();
+    // ambil function showTodolist dari service
+    $todolistService->showTodolist();
 
-//     $todolistService->removeTodolist(4);
-//     $todolistService->showTodolist();
+    // ambil function removeTodolist dari service
+    $todolistService->removeTodolist(1);
+    // dan ambil function showTodolist dari service
+    $todolistService->showTodolist();
 
-//     $todolistService->removeTodolist(2);
-//     $todolistService->showTodolist();
+    $todolistService->removeTodolist(4);
+    $todolistService->showTodolist();
 
-//     $todolistService->removeTodolist(1);
-//     $todolistService->showTodolist();
-// }
+    $todolistService->removeTodolist(2);
+    $todolistService->showTodolist();
 
-// testRemoveTodolist();
+    $todolistService->removeTodolist(1);
+    $todolistService->showTodolist();
+}
+
+testRemoveTodolist();
 // testShowTodolist();
 // testAddTodolist();
