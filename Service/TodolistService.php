@@ -24,39 +24,47 @@ namespace Service {
         function removeTodolist(int $number): void;  // return nya : void
     }
 
-    // class TodolistServiceImpl implements TodolistService
-    // {
+    // class todolist implementasi, jadi akan implement interface TodolistService
+    class TodolistServiceImpl implements TodolistService
+    {
+        // ambil interface TodolistRepository, atau ambil attribute
+        private TodolistRepository $todolistRepository;
 
-    //     private TodolistRepository $todolistRepository;
+        // set sebagai construct, yang punya parameter TodolistRepository
+        public function __construct(TodolistRepository $todolistRepository)
+        {
+            // set 
+            $this->todolistRepository = $todolistRepository;
+        }
 
-    //     public function __construct(TodolistRepository $todolistRepository)
-    //     {
-    //         $this->todolistRepository = $todolistRepository;
-    //     }
+        // show, menampilkan todolist datanya
+        function showTodolist(): void
+        {
+            echo "TODOLIST" . PHP_EOL;
 
-    //     function showTodolist(): void
-    //     {
-    //         echo "TODOLIST" . PHP_EOL;
-    //         $todolist = $this->todolistRepository->findAll();
-    //         foreach ($todolist as $number => $value) {
-    //             echo "$number. " . $value->getTodo() . PHP_EOL;
-    //         }
-    //     }
+            // ambil todolist nya dengan findAll
+            $todolist = $this->todolistRepository->findAll();
+            foreach ($todolist as $number => $value) {
+                echo "$number. " . $value->getTodo() . PHP_EOL;
+            }
+        }
 
-    //     function addTodolist(string $todo): void
-    //     {
-    //         $todolist = new Todolist($todo);
-    //         $this->todolistRepository->save($todolist);
-    //         echo "SUKSES MENAMBAH TODOLIST" . PHP_EOL;
-    //     }
+        // add 
+        function addTodolist(string $todo): void
+        {
+            $todolist = new Todolist($todo);
+            $this->todolistRepository->save($todolist);
+            echo "SUKSES MENAMBAH TODOLIST" . PHP_EOL;
+        }
 
-    //     function removeTodolist(int $number): void
-    //     {
-    //         if ($this->todolistRepository->remove($number)) {
-    //             echo "SUKSES MENGHAPUS TODOLIST" . PHP_EOL;
-    //         } else {
-    //             echo "GAGAL MENGHAPUS TODOLIST" . PHP_EOL;
-    //         }
-    //     }
-    // }
+        // remove
+        function removeTodolist(int $number): void
+        {
+            if ($this->todolistRepository->remove($number)) {
+                echo "SUKSES MENGHAPUS TODOLIST" . PHP_EOL;
+            } else {
+                echo "GAGAL MENGHAPUS TODOLIST" . PHP_EOL;
+            }
+        }
+    }
 }

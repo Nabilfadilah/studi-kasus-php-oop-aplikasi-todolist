@@ -20,35 +20,39 @@ namespace Repository {
         function findAll(): array;
     }
 
-    // class TodolistRepositoryImpl implements TodolistRepository
-    // {
+    // class todolist implementasi, jadi akan implement interface TodolistRepository
+    class TodolistRepositoryImpl implements TodolistRepository
+    {
+        // variabel todolist, menggunakan array
+        public array $todolist = array();
 
-    //     public array $todolist = array();
+        // function save yang mengambil parameter class todolist
+        function save(Todolist $todolist): void
+        {
+            $number = sizeof($this->todolist) + 1;
+            $this->todolist[$number] = $todolist;
+        }
 
-    //     function save(Todolist $todolist): void
-    //     {
-    //         $number = sizeof($this->todolist) + 1;
-    //         $this->todolist[$number] = $todolist;
-    //     }
+        // function remove, dengan parameter no datanya
+        function remove(int $number): bool
+        {
+            if ($number > sizeof($this->todolist)) {
+                return false;
+            }
 
-    //     function remove(int $number): bool
-    //     {
-    //         if ($number > sizeof($this->todolist)) {
-    //             return false;
-    //         }
+            for ($i = $number; $i < sizeof($this->todolist); $i++) {
+                $this->todolist[$i] = $this->todolist[$i + 1];
+            }
 
-    //         for ($i = $number; $i < sizeof($this->todolist); $i++) {
-    //             $this->todolist[$i] = $this->todolist[$i + 1];
-    //         }
+            unset($this->todolist[sizeof($this->todolist)]);
 
-    //         unset($this->todolist[sizeof($this->todolist)]);
+            return true;
+        }
 
-    //         return true;
-    //     }
-
-    //     function findAll(): array
-    //     {
-    //         return $this->todolist;
-    //     }
-    // }
+        // function ambil semua data
+        function findAll(): array
+        {
+            return $this->todolist;
+        }
+    }
 }
